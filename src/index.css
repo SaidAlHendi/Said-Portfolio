@@ -1,0 +1,199 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 10%;
+    --foreground: 210 40% 98%;
+
+    --card: 0 0% 15%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 0 0% 15%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 152 61% 56%;
+    --primary-foreground: 152 61% 15%;
+
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+
+    --accent: 152 61% 56%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 152 61% 56%;
+    --radius: 0.5rem;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-said-dark-gray text-foreground antialiased;
+    font-feature-settings: 'rlig' 1, 'calt' 1;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    @apply bg-said-green/20 text-said-green;
+  }
+}
+
+@layer components {
+  .nav-link {
+    @apply relative px-3 py-2 text-said-light-gray hover:text-said-green transition-colors duration-300;
+  }
+
+  .nav-link::after {
+    content: '';
+    @apply absolute left-0 bottom-0 w-0 h-[2px] bg-said-green transition-all duration-300;
+  }
+
+  .nav-link:hover::after {
+    @apply w-full;
+  }
+
+  .nav-link.active {
+    @apply text-said-green;
+  }
+
+  .nav-link.active::after {
+    @apply w-full;
+  }
+
+  .heading {
+    @apply font-bold relative inline-block;
+  }
+
+  .heading::after {
+    content: '';
+    @apply block w-3/4 h-1 bg-said-green mt-2;
+  }
+
+  .code-snippet {
+    @apply font-mono text-xs md:text-sm bg-black/50 p-4 rounded-md border border-said-green/20 overflow-x-auto;
+  }
+
+  .code-snippet .comment {
+    @apply text-gray-500;
+  }
+
+  .code-snippet .keyword {
+    @apply text-purple-400;
+  }
+
+  .code-snippet .string {
+    @apply text-amber-300;
+  }
+
+  .code-snippet .function {
+    @apply text-yellow-500;
+  }
+
+  .code-snippet .variable {
+    @apply text-blue-400;
+  }
+
+  .code-snippet .object {
+    @apply text-teal-400;
+  }
+
+  .button {
+    @apply px-6 py-2 bg-said-green text-black font-medium rounded-md hover:bg-said-green/80 transition-all duration-300 inline-flex items-center gap-2;
+  }
+
+  .button.outline {
+    @apply bg-transparent border border-said-green text-said-green hover:bg-said-green/10;
+  }
+
+  .skill-tag {
+    @apply bg-secondary text-said-light-gray px-3 py-1 rounded-md text-sm font-mono;
+  }
+
+  .project-card {
+    @apply relative overflow-hidden rounded-lg bg-card border border-secondary hover:border-said-green/50 transition-all duration-300;
+  }
+
+  .form-input {
+    @apply w-full bg-muted border border-border rounded-md p-3 text-foreground focus:outline-none focus:ring-2 focus:ring-said-green/50 transition-all duration-300;
+  }
+
+  /* 3D Transform Utilities */
+  .transform-style-3d {
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+  }
+
+  .rotate-y-10 {
+    transform: rotateY(10deg);
+  }
+
+  .rotate-x-5 {
+    transform: rotateX(5deg);
+  }
+
+  /* Animation for appearing elements */
+  .animate-on-mount {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  }
+
+  .animate-fade-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Particle effects */
+  .particle-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .particle-cursor {
+    pointer-events: none;
+    position: fixed;
+    mix-blend-mode: difference;
+    z-index: 9999;
+    transition: transform 0.1s ease-out;
+  }
+}
+
+.project-img {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom right,
+    #00c897,
+    #222
+  ); /* var(--clr-primary-5) */
+  opacity: 0.85;
+  transition: all 0.4s ease-in-out;
+  z-index: 1;
+}
+
+.project:hover .project-img::after {
+  opacity: 0;
+}
