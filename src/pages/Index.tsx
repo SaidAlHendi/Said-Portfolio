@@ -104,15 +104,18 @@ function createAmazingSolutions() {
                   Let's create something amazing together.
                 </p>
                 <div
-                  className='flex space-x-4 opacity-0 animate-on-mount'
+                  className='flex flex-col sm:flex-row sm:space-x-4 space-y-4 sm:space-y-0 opacity-0 animate-on-mount'
                   style={{ animationDelay: '1s' }}
                 >
-                  <Link to='/contact' className='button text-lg px-8 py-3'>
+                  <Link
+                    to='/contact'
+                    className='text-lg px-6 py-3 rounded-xl bg-primary button text-center hover:bg-primary/90 transition duration-300 w-full sm:w-auto'
+                  >
                     Contact me
                   </Link>
                   <Link
                     to='/projects'
-                    className='button outline text-lg px-8 py-3'
+                    className='text-lg px-6 py-3 rounded-xl border-1 border-primary text-primary  outline duration-300 w-full sm:w-auto'
                   >
                     View Projects
                   </Link>
